@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Novo Remédio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5" th:text="${acao} == null ? 'Novo Remédio' : 'Editar Remédio'">Novo Remédio</h1>
+    <form th:action="${acao} == null ? '/drogaria' : ${acao}" method="post">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input th:value="${acao} != null ? ${remedio.nome}" id="nome" name="nome" type="text" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="preco" class="form-label">Preço</label>
+            <input th:value="${acao} != null ? ${remedio.preco}" id="preco" name="preco" type="number" class="form-control" step="0.01" required>
+        </div>
+        <div class="mb-3">
+            <label for="dataDeFabricacao" class="form-label">Data de Fabricação</label>
+            <input th:value="${acao} != null ? ${remedio.dataDeFabricacao}" id="dataDeFabricacao" name="dataDeFabricacao" type="date" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="dataDeValidade" class="form-label">Data de Validade</label>
+            <input th:value="${acao} != null ? ${remedio.dataDeValidade}" id="dataDeValidade" name="dataDeValidade" type="date" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="urlImagem" class="form-label">URL da Imagem</label>
+            <input th:value="${acao} != null ? ${remedio.urlImagem}" id="urlImagem" name="urlImagem" type="text" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="/drogaria" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>
